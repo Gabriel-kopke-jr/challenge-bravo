@@ -3,6 +3,7 @@
 
 #directories
 .idea
+target
 # Log file
 *.log
 
