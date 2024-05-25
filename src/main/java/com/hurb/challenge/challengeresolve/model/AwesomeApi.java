@@ -12,4 +12,20 @@ public class AwesomeApi {
     private String codein;
     private BigDecimal high;
     private BigDecimal low;
+
+    public String generateKey() {
+        return getCode() + "-" + getCodein();
+    }
+
+    public String generateInvertedKey() {
+        return getCodein() + "-" + getCode();
+    }
+
+    public BigDecimal generateValueKey() {
+        return getHigh().add(getLow()).multiply(BigDecimal.valueOf(0.5));
+    }
+
+    public BigDecimal generateValueInvertedKey() {
+        return generateValueKey().pow(-1);
+    }
 }
