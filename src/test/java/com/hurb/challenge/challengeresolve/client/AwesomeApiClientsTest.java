@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class HttpClientsTest {
+class AwesomeApiClientsTest {
 
-    private HttpClients underTest = new HttpClients();
+    private AwesomeApiClients underTest = new AwesomeApiClients();
 
     @Test
     void testIfObjectIsGive() throws JsonProcessingException {

@@ -2,5 +2,6 @@ spring:
     application:
         name: challenge-resolve
 
+http:
     awesomeapi:
         url: https://economia.awesomeapi.com.br/last/

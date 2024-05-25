@@ -4,14 +4,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hurb.challenge.challengeresolve.model.AwesomeApi;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
 @Component
-public class HttpClients {
-    private String awesomeApiUrl = "https://economia.awesomeapi.com.br/last/";
+public class AwesomeApiClients {
+    @Value("${http.awesomeapi.url}")
+    private String awesomeApiUrl;
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private RestTemplate restTemplate = new RestTemplate();
