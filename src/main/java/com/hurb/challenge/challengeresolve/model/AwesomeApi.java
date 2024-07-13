@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -26,6 +27,6 @@ public class AwesomeApi {
     }
 
     public BigDecimal generateValueInvertedKey() {
-        return generateValueKey().pow(-1);
+        return BigDecimal.ONE.divide(generateValueKey(), MathContext.DECIMAL64);
     }
 }
