@@ -23,8 +23,7 @@ public class AwesomeApiClients {
         String rawData = restTemplate.getForObject(url, String.class);
         Map<String, AwesomeApi> map = objectMapper.readValue(rawData, new TypeReference<Map<String, AwesomeApi>>() {
         });
-        AwesomeApi awesomeApiResultFromSearch = map.values().stream().toList().get(0);
-        return awesomeApiResultFromSearch;
+        return map.values().stream().toList().get(0);
     }
 
     private String buildUriToSearch(String originalCurrency, String finalCurrency) {

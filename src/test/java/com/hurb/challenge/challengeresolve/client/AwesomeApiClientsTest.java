@@ -35,7 +35,7 @@ class AwesomeApiClientsTest {
     private String awesomeApiUrl;
 
     @Test
-    public void testFetchCurrency() throws JsonProcessingException {
+    void testFetchCurrency() throws JsonProcessingException {
         String mockResponse = "{\"USD_BRL\": {\"code\":\"USD\",\"codein\":\"BRL\",\"name\":\"Dollar/Real\",\"high\":\"5.2421\",\"low\":\"5.211\",\"varBid\":\"0.023\",\"pctChange\":\"0.44\",\"bid\":\"5.2221\",\"ask\":\"5.2231\",\"timestamp\":\"1652025254\",\"create_date\":\"2022-05-10 17:14:14\"}}";
         when(restTemplate.getForObject(anyString(), eq(String.class))).thenReturn(mockResponse);
         ObjectMapper objectMapper = new ObjectMapper();

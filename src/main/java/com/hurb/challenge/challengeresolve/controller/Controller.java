@@ -19,7 +19,7 @@ public class Controller {
     private MoneyConvertService moneyConvertService;
 
     @GetMapping("/convert")
-    private String convertCurrency(
+    public String convertCurrency(
         @RequestParam("from") String originCurrency,
         @RequestParam("to") String finalCurrency,
         @RequestParam("amount") BigDecimal amountMoney
@@ -36,7 +36,7 @@ public class Controller {
     }
 
     @GetMapping("/currency")
-    private ResponseEntity addNewCurrency(
+    public ResponseEntity addNewCurrency(
         @RequestParam("from") String originCurrency,
         @RequestParam("to") String finalCurrency,
         @RequestParam("conversionTax") BigDecimal constant

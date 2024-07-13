@@ -14,10 +14,9 @@ public class MoneyConvertService {
     public BigDecimal convertCurrency(String originCurrency, String finalCurrency, BigDecimal amount){
         String key = originCurrency + "-" + finalCurrency;
         Boolean isInCluster = redisService.checkKey(key);
-        if (isInCluster) {
+        if (isInCluster.equals(true)) {
             BigDecimal tax = BigDecimal.valueOf(Float.parseFloat(redisService.getTax(key)));
-            BigDecimal finalAmount = amount.multiply(tax);
-            return finalAmount;
+            return amount.multiply(tax);
         }
         AwesomeApi awesomeApi = awesomeApiService.fetchCurrency(originCurrency, finalCurrency);
         redisService.includeInCluster(awesomeApi);
