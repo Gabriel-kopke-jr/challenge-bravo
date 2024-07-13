@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
+import java.math.BigDecimal;
+
 
 @Service
 public class RedisService {
@@ -13,9 +15,13 @@ public class RedisService {
     private RedisClient redisClient;
 
     public void includeInCluster(AwesomeApi awesomeApi) {
+        includeInCluster(awesomeApi.generateKey(), awesomeApi.generateValueKey());
+        includeInCluster(awesomeApi.generateInvertedKey(), awesomeApi.generateValueInvertedKey());
+    }
+
+    public void includeInCluster(String key, BigDecimal value) {
         Jedis jedis = redisClient.redisConfig();
-        jedis.set(awesomeApi.generateKey(), awesomeApi.generateValueKey().toString());
-        jedis.set(awesomeApi.generateInvertedKey(), awesomeApi.generateValueInvertedKey().toString());
+        jedis.set(key, value.toString());
     }
 
     public Boolean checkKey(String key) {
