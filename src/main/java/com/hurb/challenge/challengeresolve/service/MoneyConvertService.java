@@ -24,4 +24,12 @@ public class MoneyConvertService {
         return awesomeApi.generateValueKey();
     }
 
+    public void addToCluster(String originCurrency, String finalCurrency, BigDecimal constant) {
+        String key = originCurrency + "-" + finalCurrency;
+        String reverseKey = finalCurrency + "-" + originCurrency;
+        redisService.includeInCluster(key, constant);
+        BigDecimal inversedConstant = BigDecimal.valueOf(1 / constant.floatValue());
+        redisService.includeInCluster(reverseKey, inversedConstant);
+    }
+
 }
