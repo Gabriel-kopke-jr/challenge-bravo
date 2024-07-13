@@ -20,7 +20,7 @@ public class AwesomeApiClients {
 
     public AwesomeApi fetchCurrency(String originalCurrency, String finalCurrency) throws JsonProcessingException {
         String url = buildUriToSearch(originalCurrency, finalCurrency);
-        var rawData = restTemplate.getForObject(url, String.class);
+        String rawData = restTemplate.getForObject(url, String.class);
         Map<String, AwesomeApi> map = objectMapper.readValue(rawData, new TypeReference<Map<String, AwesomeApi>>() {
         });
         AwesomeApi awesomeApiResultFromSearch = map.values().stream().toList().get(0);
